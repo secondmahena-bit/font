@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Utils Tool</title>
+
+<style>
+/* -------- Global -------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #222;
+}
+
+/* -------- Header -------- */
+header {
+    background: #2d3436;
+    color: white;
+    padding: 1.2rem;
+    text-align: center;
+}
+
+header nav {
+    margin-top: 0.5rem;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* -------- Main Layout -------- */
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* -------- Tool Card -------- */
+.tool-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.tool-card h2 {
+    margin-bottom: 10px;
+}
+
+.tool-card p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* -------- Buttons -------- */
+button {
+    padding: 12px 20px;
+    margin: 10px 5px 0 0;
+    border: none;
+    border-radius: 6px;
+    background: #0984e3;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background: #076bb3;
+    transform: translateY(-2px);
+}
+
+/* -------- File Input -------- */
+input[type="file"] {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* -------- Footer -------- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #dfe6e9;
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Utils Tool</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Tools</a>
+        <a href="#">About</a>
+    </nav>
+</header>
+
+<main>
+    <div class="tool-card">
+        <h2>Font Converter</h2>
+        <p>Convert .ttf or .otf fonts into Scratch-compatible assets.</p>
+
+        <h3>Step 1 – Upload Font</h3>
+        <input type="file" id="fontFile" accept=".ttf,.otf">
+
+        <h3>Step 2 – Choose Action</h3>
+        <button id="createSprite">Create New Sprite</button>
+        <button id="modifySprite">Modify Existing Sprite</button>
+
+        <p id="status" style="margin-top:15px; font-weight:bold;"></p>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2026 My Utils Site</p>
+</footer>
+
+<script>
+const fontFile = document.getElementById("fontFile");
+const statusText = document.getElementById("status");
+
+document.getElementById("createSprite").onclick = () => {
+    if (!fontFile.files.length) {
+        statusText.innerText = "Please upload a font first!";
+        statusText.style.color = "red";
+    } else {
+        statusText.innerText = "Creating new sprite from " + fontFile.files[0].name + "...";
+        statusText.style.color = "green";
+    }
+};
+
+document.getElementById("modifySprite").onclick = () => {
+    if (!fontFile.files.length) {
+        statusText.innerText = "Please upload a font first!";
+        statusText.style.color = "red";
+    } else {
+        statusText.innerText = "Modifying sprite with " + fontFile.files[0].name + "...";
+        statusText.style.color = "green";
+    }
+};
+</script>
+
+</body>
+</html>
